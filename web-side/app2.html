@@ -4,8 +4,8 @@
 <script src="http://127.0.0.1:8081/socket.io/socket.io.js"></script>
 <script language="javascript" src="../js/creative.js"></script>
 <script language="javascript" src="../js/canvas.js"></script>
-<script language="javascript" src="../js/vector.js"></script>
-<script language="javascript" src="../js/vector_particles.js"></script>
+<script language="javascript" src="../../code365/js/vector.js"></script>
+<script language="javascript" src="../../code365/js/vector_particles.js"></script>
 </head>
 
 <body>
@@ -60,15 +60,16 @@ var socket = io.connect('http://127.0.0.1', { port: 8081, rememberTransport: fal
         //status.innerHTML = obj[0];
         // console.log(obj[2]);
         // console.log(obj[3]);
+        ctx.strokeStyle = rgba(0,0,0,0.5);
+        ctx.fillStyle = rgba(220,220,220,0.05);
+        //ctx.fillRect(0, 0, w, h);
 
-        // ctx.fillStyle = rgba(220,220,220,0.8);
-        // ctx.fillRect(0, 0, w, h);
-
-        sz = tween(sz, map(obj[7], -2,2, 20, 80), 5);
+        sz = tween(sz, map(obj[7], -2,2, 1, 5), 5);
         x = tween(x, map(obj[2], -2,2, 0, w),10);
         y = tween(y, map(obj[3], -2,2, 0, h),10);
         orient = tween(orient, map(obj[4], -2,2, 0, 255),10);
-        ctx.fillStyle = hsl(orient,50, 50);
+        //ctx.fillStyle = hsl(orient,50, 50);
+        ctx.fillStyle = "black";
         ctx.fillEllipse(w-x,h-y, sz, sz);
         //var m = JSON.stringify(obj);
         //console.log("-- " + obj[1]);
@@ -89,9 +90,9 @@ var socket = io.connect('http://127.0.0.1', { port: 8081, rememberTransport: fal
             p.sz = p.speed.x;
             //p.sz =  map(p.speed, 0, 8, 4, 25);
             //console.log(p.dist)
-            // ctx.line(p.position.x, p.position.y, mouseX, mouseY);
+            //ctx.line(p.position.x, p.position.y, x, y);
             // ctx.fillEllipse(p.position.x, p.position.y, p.sz, p.sz);
-            ctx.fillEllipse(p.position.x, p.position.y, p.sz, p.sz);
+            ctx.fillEllipse(p.position.x, p.position.y, 1, 1);
 
         }
 
